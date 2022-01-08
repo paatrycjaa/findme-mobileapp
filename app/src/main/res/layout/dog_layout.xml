@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    app:cardElevation="5dp"
+    app:cardCornerRadius="10dp">
+
+
+<!--    <data>-->
+<!--        <variable-->
+<!--            name="dog"-->
+<!--            type="com.example.findme.models.Dog"/>-->
+
+<!--        &lt;!&ndash; We will be passing a ProductItemClickListener object called-->
+<!--         'productItemClick' and we will use this for managing list item clicks&ndash;&gt;-->
+<!--        <variable-->
+<!--            name="dogItemClick"-->
+<!--            type="com.example.findme.adapters.DogsAdapter.DogItemClickListener"/>-->
+<!--    </data>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+<!--        android:onClick="@{() ->  dogItemClick.onDogItemClicked(dog)}">-->
+
+
+        <ImageView
+            android:id="@+id/dog_image"
+            android:layout_width="match_parent"
+            android:layout_height="310dp"
+            android:scaleType="centerCrop"
+            />
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp">
+
+            <ImageView
+                android:id="@+id/pet_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_pets_24"
+                app:tint="#000"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                />
+
+            <TextView
+                android:id="@+id/pet_home"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Nazwa psa"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linear2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:id="@+id/calendar_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_calendar_today_24"
+                app:tint="#000"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                />
+            <TextView
+                android:id="@+id/found"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Znaleziony:"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Znaleziony:"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
