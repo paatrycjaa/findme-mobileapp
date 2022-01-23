@@ -18,7 +18,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 
 //import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : PermissionActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding

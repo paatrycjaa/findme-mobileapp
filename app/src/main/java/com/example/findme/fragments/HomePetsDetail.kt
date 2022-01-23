@@ -140,6 +140,3 @@ class HomePetsDetail : Fragment(), OnMapReadyCallback {
 
 }
 
-private fun RecyclerView.addOnScrollListener(onScrollListener: RecyclerView.OnScrollListener, function: () -> Unit) {
-
-}
