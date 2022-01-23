@@ -17,10 +17,9 @@ import com.example.findme.databinding.DogLayoutBinding
 import com.example.findme.models.Dog
 import com.bumptech.glide.RequestManager;
 
-class DogsAdapter() : RecyclerView.Adapter<DogsAdapter.ViewHolder>(), Filterable{
+class DogsAdapter() : RecyclerView.Adapter<DogsAdapter.ViewHolder>(){
 
     var dogs = mutableListOf<Dog>()
-    //var filtered_dogs = mutableListOf<Dog>()
     private lateinit var mListener : onDogItemClickListener
 
     fun setOnItemClickListener(listener: onDogItemClickListener){
@@ -52,6 +51,14 @@ class DogsAdapter() : RecyclerView.Adapter<DogsAdapter.ViewHolder>(), Filterable
         notifyDataSetChanged()
     }
 
+    fun addHomeDog(dog: Dog, string: String){
+        if(!dogs.contains(dog) and (dog.pet_home_link?.contains(string) == true) and (dogs.size < 6)){
+            dogs.add(dog)
+        }
+        notifyDataSetChanged()
+    }
+
+
     override fun getItemCount(): Int {
         return dogs.size
     }
@@ -60,7 +67,4 @@ class DogsAdapter() : RecyclerView.Adapter<DogsAdapter.ViewHolder>(), Filterable
         fun onDogItemClicked(position : Int, dog : Dog)
     }
 
-    override fun getFilter(): Filter {
-        TODO("Not yet implemented")
-    }
 }

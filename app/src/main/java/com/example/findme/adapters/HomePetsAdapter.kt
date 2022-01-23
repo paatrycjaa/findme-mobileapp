@@ -32,6 +32,7 @@ class HomePetsAdapter() : RecyclerView.Adapter<HomePetsAdapter.ViewHolder>() {
         }
         holder.binding.address.text = homepets[position].address
         holder.binding.city.text = homepets[position].city
+        holder.binding.petHome.text = homepets[position].name
     }
 
     override fun getItemCount(): Int {

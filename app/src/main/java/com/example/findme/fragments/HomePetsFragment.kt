@@ -13,7 +13,6 @@ import com.example.findme.HomePetsViewModel
 import com.example.findme.R
 import com.example.findme.adapters.DogsAdapter
 import com.example.findme.adapters.HomePetsAdapter
-import com.example.findme.databinding.FragmentHomeBinding
 import com.example.findme.databinding.FragmentHomePetsBinding
 import com.example.findme.models.Dog
 import com.example.findme.models.HomePet

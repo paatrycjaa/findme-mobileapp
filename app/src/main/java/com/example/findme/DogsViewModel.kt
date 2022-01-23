@@ -69,7 +69,13 @@ class DogsViewModel: ViewModel() {
     }
 
     fun getRealTimeUpdateHomePet(string: String){
-        val orderByDateQueryHomePet = dbdogs.orderByChild("date").equalTo(string, "pet_home")
+        val orderByDateQueryHomePet = dbdogs.orderByChild("pet_home_link").startAt("schroniskonapaluchu", "pet_home_link")
+        orderByDateQueryHomePet.addChildEventListener(childEventListener)
+    }
+
+    fun getRealTimeUpdateType(string: String){
+        val orderByDateQueryType = dbdogs.orderByChild("type").equalTo("Beagle", "type")
+        orderByDateQueryType.addChildEventListener(childEventListener)
     }
 
     override fun onCleared() {

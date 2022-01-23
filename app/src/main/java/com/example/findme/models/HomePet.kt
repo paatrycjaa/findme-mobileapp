@@ -11,6 +11,7 @@ data class HomePet(
     var id: String? = null,
     var contact: String? = null,
     var name: String? = null,
+    var name_link: String? = null,
     var web: String? = null,
     var address: String? = null,
     var city: String? = null

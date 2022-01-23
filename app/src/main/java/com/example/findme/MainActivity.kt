@@ -11,8 +11,11 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.example.findme.databinding.ActivityMainBinding
+import com.example.findme.fragments.DialogFragment
 import com.example.findme.fragments.HomeFragment
 import com.example.findme.fragments.HomePetsFragment
+import com.google.android.material.bottomsheet.BottomSheetDialog
+
 //import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         val homePetsFragment = HomePetsFragment()
         val homeFragment = HomeFragment()
+        val dialogFragment = DialogFragment()
 
         makeCurrentFragment(homeFragment)
 
@@ -39,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId){
                 R.id.ic_baseline_home_24 -> makeCurrentFragment(homeFragment)
                 R.id.ic_baseline_pets_24 -> makeCurrentFragment(homePetsFragment)
+                R.id.ic_baseline_search_24 -> dialogFragment.show(supportFragmentManager,"dialog")
             }
             true
         }

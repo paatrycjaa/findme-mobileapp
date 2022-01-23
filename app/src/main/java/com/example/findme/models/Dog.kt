@@ -17,6 +17,7 @@ data class Dog(
     var description: String? = null,
     var date: String? = null,
     var address: String? = null,
+    var pet_home_link: String? = null,
     var city: String? = null
 ) : Parcelable
 

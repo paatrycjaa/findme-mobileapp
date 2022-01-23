@@ -11,12 +11,16 @@
         <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/drawable/ic_launcher_background.xml" value="0.37916666666666665" />
         <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/activity_main.xml" value="0.2409972299168975" />
         <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/content_main.xml" value="0.10371376811594203" />
+        <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/dialog_layout.xml" value="0.36302083333333335" />
         <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/dog_layout.xml" value="0.1" />
+        <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/dog_layout_2.xml" value="0.1" />
+        <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/fragment_dialog.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/fragment_dog.xml" value="0.25" />
         <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/fragment_first.xml" value="0.335" />
         <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/fragment_home_pets.xml" value="0.203125" />
-        <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/fragment_home_pets_detail.xml" value="0.13746065057712487" />
+        <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/fragment_home_pets_detail.xml" value="0.1" />
+        <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/fragment_home_pets_dogs.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/fragment_second.xml" value="0.10371376811594203" />
         <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/layout/pethome_layout.xml" value="0.2578125" />
         <entry key="..\:/Users/patry/AndroidStudioProjects/findme/app/src/main/res/menu/menu_main.xml" value="0.45" />
