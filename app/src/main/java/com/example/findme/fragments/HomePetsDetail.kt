@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.findme.DogsViewModel
 import com.example.findme.HomePetsViewModel
+import com.example.findme.MainActivity
 import com.example.findme.R
 import com.example.findme.adapters.DogsAdapter
 import com.example.findme.adapters.DogsHomePetsAdapter
@@ -27,7 +28,7 @@ import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-class HomePetsDetail : Fragment(), OnMapReadyCallback {
+class HomePetsDetail : BaseFragment(), OnMapReadyCallback {
 
     private var _binding: FragmentHomePetsDetailBinding? = null
     private val binding get() = _binding!!
@@ -35,6 +36,7 @@ class HomePetsDetail : Fragment(), OnMapReadyCallback {
     private val adapter = DogsHomePetsAdapter()
     private lateinit var viewModel: DogsViewModel
     private var homepetname = String()
+    override var bottomNavigationViewVisibility = View.GONE
 
 //
 //    override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -47,7 +49,7 @@ class HomePetsDetail : Fragment(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setHasOptionsMenu(true)
-
+        (activity as MainActivity).setBottomNavigationVisibility(View.INVISIBLE)
         super.onCreate(savedInstanceState)
     }
 
@@ -117,6 +119,7 @@ class HomePetsDetail : Fragment(), OnMapReadyCallback {
                 val dogsfragment = HomePetsDogsFragment()
                 val args = Bundle()
                 args.putString("pethome", homepetname)
+                args.putString("name", binding.name.text.toString())
                 dogsfragment.arguments = args
                 activity?.supportFragmentManager?.beginTransaction()?.apply {
                     replace(R.id.fl_wrapper, dogsfragment)

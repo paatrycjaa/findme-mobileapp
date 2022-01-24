@@ -16,7 +16,7 @@
             android:id="@+id/card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="15dp"
             android:orientation="vertical"
             app:cardElevation="5dp">
@@ -29,8 +29,8 @@
                 <TextView
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_marginStart="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:text="Nazwa schroniska:"
@@ -54,7 +54,7 @@
                         android:layout_marginTop="5dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_baseline_location_on_24"
-                        app:tint="#000" />
+                        app:tint="?attr/colorOnPrimary" />
 
                     <TextView
                         android:id="@+id/address"
@@ -94,7 +94,7 @@
                         android:layout_marginTop="5dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_baseline_call_24"
-                        app:tint="#000" />
+                        app:tint="?attr/colorOnPrimary"  />
 
                     <TextView
                         android:id="@+id/contact"
@@ -124,7 +124,7 @@
                         android:layout_marginTop="5dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_baseline_blur_circular_24"
-                        app:tint="#000" />
+                        app:tint="?attr/colorOnPrimary"  />
 
                     <TextView
                         android:id="@+id/web"
@@ -158,7 +158,9 @@
             android:layout_below="@id/card"
             android:text="Zwierzęta w schronisku:"
             android:textSize="21dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_petshome"
@@ -173,14 +175,16 @@
             tools:listitem="@layout/dog_layout_2" />
 
     </LinearLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fab"
-        android:backgroundTint="?android:attr/windowBackground"
         android:layout_gravity="bottom|right"
-        android:layout_marginBottom="100dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="125dp"
+        android:backgroundTint="?android:attr/windowBackground"
+        app:tint="?attr/colorOnPrimary"
         android:src="@drawable/ic_baseline_navigate_next_24"
-        ></com.google.android.material.floatingactionbutton.FloatingActionButton>
+        tools:ignore="SpeakableTextPresentCheck" />
 </FrameLayout>

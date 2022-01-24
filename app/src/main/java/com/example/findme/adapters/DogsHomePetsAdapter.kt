@@ -50,7 +50,11 @@ class DogsHomePetsAdapter() : RecyclerView.Adapter<DogsHomePetsAdapter.ViewHolde
         holder.binding.date.text = dogs[position].date
         val url = dogs[position].image_url
         val imagePath = holder.binding.dogImage
-        Glide.with(holder.itemView.context).load(url).into(imagePath)
+        Glide.with(holder.itemView.context)
+            .load(url)
+            .placeholder(android.R.drawable.progress_indeterminate_horizontal)
+            .error(android.R.drawable.stat_notify_error)
+            .into(imagePath)
     }
 //    override fun getFilter(): Filter {
 //        return object : Filter() {

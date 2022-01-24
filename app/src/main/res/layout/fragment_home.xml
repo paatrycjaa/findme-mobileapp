@@ -31,9 +31,23 @@
             android:layout_marginBottom="10dp"
             android:clipToPadding="false"
             android:paddingBottom="8dp"
-            tools:listitem="@layout/dog_layout"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
+            tools:listitem="@layout/dog_layout" />
     </RelativeLayout>
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="?attr/colorOnPrimary"
+        app:tint="?attr/colorPrimary"
+        app:icon="@drawable/ic_baseline_search_24"
+        app:iconTint="?attr/colorPrimary"
+        android:text="Szukaj pupila"
+        android:textColor="?attr/colorPrimary"
+        tools:ignore="SpeakableTextPresentCheck">
+    </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
 
 </FrameLayout>

@@ -9,12 +9,14 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.findme.databinding.ActivityMainBinding
 import com.example.findme.fragments.DialogFragment
 import com.example.findme.fragments.HomeFragment
 import com.example.findme.fragments.HomePetsFragment
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.ml.common.FirebaseMLException
 
 //import kotlinx.android.synthetic.main.activity_main.*
 
@@ -22,6 +24,7 @@ class MainActivity : PermissionActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    var classifier: DogClassifier? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,11 +34,21 @@ class MainActivity : PermissionActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setHomeButtonEnabled(true)
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        // Setup image classifier.
+        try {
+            classifier = DogClassifier(this)
+        } catch (e: FirebaseMLException) {
+            Toast.makeText(
+                this,
+                "Failed to initialize an image classifier.",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
 
 
         val homePetsFragment = HomePetsFragment()
         val homeFragment = HomeFragment()
-        val dialogFragment = DialogFragment()
+        //val dialogFragment = DialogFragment()
 
         makeCurrentFragment(homeFragment)
 
@@ -43,7 +56,7 @@ class MainActivity : PermissionActivity() {
             when (item.itemId){
                 R.id.ic_baseline_home_24 -> makeCurrentFragment(homeFragment)
                 R.id.ic_baseline_pets_24 -> makeCurrentFragment(homePetsFragment)
-                R.id.ic_baseline_search_24 -> dialogFragment.show(supportFragmentManager,"dialog")
+                //R.id.ic_baseline_search_24 -> dialogFragment.show(supportFragmentManager,"dialog")
             }
             true
         }
@@ -69,6 +82,11 @@ class MainActivity : PermissionActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    fun setBottomNavigationVisibility(visibility: Int) {
+        // get the reference of the bottomNavigationView and set the visibility.
+        binding.bottomNavigation.visibility = visibility
     }
 
 //    override fun onSupportNavigateUp(): Boolean {

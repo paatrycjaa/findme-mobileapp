@@ -17,12 +17,13 @@ import com.example.findme.databinding.FragmentHomePetsBinding
 import com.example.findme.models.Dog
 import com.example.findme.models.HomePet
 
-class HomePetsFragment : Fragment() {
+class HomePetsFragment : BaseFragment() {
 
     private var _binding: FragmentHomePetsBinding? = null
     private val binding get() = _binding!!
     private val adapter = HomePetsAdapter()
     private lateinit var viewModel: HomePetsViewModel
+    override var bottomNavigationViewVisibility = View.VISIBLE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

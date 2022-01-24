@@ -7,6 +7,10 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <string name="fail_to_initialize_img_classifier">Failed to initialize an image classifier.</string>
+    <string name="uninitialized_img_classifier_or_invalid_context">Uninitialized Classifier or invalid context.</string>
+
+
     <string name="hello_first_fragment">Hello World!</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->

@@ -23,33 +23,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:orientation="horizontal"
             android:gravity="center_horizontal|center_vertical"
            >
-
-            <ImageView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/gallery_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginRight="50dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_baseline_image_24"
-                app:tint="#000"
-                android:layout_marginTop="10dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginRight="30dp"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                app:icon="@drawable/ic_baseline_image_24"
+                app:iconSize="24dp"
+                app:iconPadding="10dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:stateListAnimator="@null"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Rounded"
                 />
-
-            <ImageView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/aparat_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_baseline_camera_alt_24"
-                app:tint="#000"
-
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                app:icon="@drawable/ic_baseline_camera_alt_24"
+                app:iconSize="24dp"
+                app:iconPadding="0dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:stateListAnimator="@null"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Rounded"
                 />
+
         </LinearLayout>
     </LinearLayout>
 

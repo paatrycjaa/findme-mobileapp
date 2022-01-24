@@ -12,16 +12,18 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.findme.DogsViewModel
+import com.example.findme.MainActivity
 import com.example.findme.R
 import com.example.findme.adapters.DogsAdapter
 import com.example.findme.databinding.FragmentDogBinding
 import com.example.findme.databinding.FragmentHomeBinding
 import com.example.findme.models.Dog
 
-class DogFragment : Fragment() {
+class DogFragment : BaseFragment() {
 
     private var _binding: FragmentDogBinding? = null
     private val binding get() = _binding!!
+    override var bottomNavigationViewVisibility = View.GONE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -45,6 +47,8 @@ class DogFragment : Fragment() {
         binding.date.text = choosenDog?.date
         binding.description.text = choosenDog?.description
         binding.gender.text = choosenDog?.gender
+        binding.address.text = choosenDog?.address
+        binding.city.text = choosenDog?.city
         // activity?.setTitle("Aktualności")
         return binding.root
     }

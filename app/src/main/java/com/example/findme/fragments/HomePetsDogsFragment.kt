@@ -4,16 +4,18 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.findme.DogsViewModel
+import com.example.findme.MainActivity
 import com.example.findme.R
 import com.example.findme.adapters.DogsAdapter
-import com.example.findme.adapters.DogsHomePetsAdapter
-import com.example.findme.databinding.FragmentHomeBinding
+import com.example.findme.adapters.DogsHomePetsAdapter2
 import com.example.findme.databinding.FragmentHomePetsDogsBinding
 import com.example.findme.models.Dog
 
@@ -27,15 +29,20 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomePetsDogsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomePetsDogsFragment : Fragment() {
+class HomePetsDogsFragment : BaseFragment() {
 
     private var _binding: FragmentHomePetsDogsBinding? = null
     private val binding get() = _binding!!
-    private val adapter = DogsHomePetsAdapter()
+    private val adapter = DogsHomePetsAdapter2()
     private lateinit var viewModel: DogsViewModel
     private var choosenHomePet = String()
+    private var name = String()
+    override var bottomNavigationViewVisibility = View.GONE
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setHasOptionsMenu(true)
+        (activity as MainActivity).setBottomNavigationVisibility(View.INVISIBLE)
         super.onCreate(savedInstanceState)
     }
 
@@ -47,6 +54,7 @@ class HomePetsDogsFragment : Fragment() {
         _binding = FragmentHomePetsDogsBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[DogsViewModel::class.java]
         choosenHomePet = arguments?.getString("pethome").toString()
+        name = arguments?.getString("name").toString()
 
         return binding.root
     }
@@ -55,12 +63,14 @@ class HomePetsDogsFragment : Fragment() {
         Log.i("HomeFragment", "On view created")
         super.onViewCreated(view, savedInstanceState)
 
-        val gridLayoutManager = GridLayoutManager(context, 2)
-        gridLayoutManager.reverseLayout = true
-        binding.recyclerViewHomeDogs.layoutManager = gridLayoutManager
+        val linearLayoutManager = LinearLayoutManager(context)
+        linearLayoutManager.reverseLayout = true
+        linearLayoutManager.stackFromEnd = true
+        binding.recyclerViewHomeDogs.layoutManager = linearLayoutManager
 
+        binding.name.text= name
         binding.recyclerViewHomeDogs.adapter = adapter
-        adapter.setOnItemClickListener(object : DogsHomePetsAdapter.onDogItemClickListener {
+        adapter.setOnItemClickListener(object : DogsHomePetsAdapter2.onDogItemClickListener {
             override fun onDogItemClicked(position: Int, dog: Dog) {
                 val dogfragment = DogFragment()
                 val args = Bundle()
@@ -77,5 +87,12 @@ class HomePetsDogsFragment : Fragment() {
         viewModel.dog.observe(viewLifecycleOwner, {adapter.addHomeDog(it,choosenHomePet)})
         viewModel.getRealtimeUpdate()
         //viewModel.getRealtimeUpdateLimited(5)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item?.itemId == android.R.id.home) {
+            activity?.supportFragmentManager?.popBackStack()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import com.example.findme.R
 import com.example.findme.databinding.FragmentDialogBinding
@@ -47,32 +46,33 @@ class DialogFragment : BottomSheetDialogFragment() {
         binding.aparatIcon.setOnClickListener { takePhoto() }
     }
 
-    var launchCameraActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data: Intent? = result.data
-            val selectedImageUri = Uri.fromFile(currentPhotoFile)
-            val searchFragment = SearchFragment()
-            val args = Bundle()
-            args.putParcelable("image", selectedImageUri)
-            searchFragment.arguments = args
-            makeCurrentFragment(searchFragment)
-            dismiss()
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode != Activity.RESULT_OK) return
+
+        when (requestCode) {
+            // Make use of FirebaseVisionImage.fromFilePath to take into account
+            // Exif Orientation of the image files.
+            REQUEST_IMAGE_CAPTURE -> {
+                val selectedImageUri = Uri.fromFile(currentPhotoFile)
+                val searchFragment = SearchFragment()
+                val args = Bundle()
+                args.putParcelable("image", selectedImageUri)
+                searchFragment.arguments = args
+                makeCurrentFragment(searchFragment)
+                dismiss()
+            }
+            REQUEST_PHOTO_LIBRARY -> {
+                val selectedImageUri = data?.data ?: return
+                val searchFragment = SearchFragment()
+                val args = Bundle()
+                args.putParcelable("image", selectedImageUri)
+                searchFragment.arguments = args
+                makeCurrentFragment(searchFragment)
+                dismiss()
+            }
         }
     }
-
-    var launchGalleryActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data: Intent? = result.data
-            val selectedImageUri = data?.data ?: return@registerForActivityResult
-            val searchFragment = SearchFragment()
-            val args = Bundle()
-            args.putParcelable("image", selectedImageUri)
-            searchFragment.arguments = args
-            makeCurrentFragment(searchFragment)
-            dismiss()
-        }
-    }
-
 
     private fun chooseFromLibrary() {
         val intent = Intent(Intent.ACTION_PICK)
@@ -82,8 +82,7 @@ class DialogFragment : BottomSheetDialogFragment() {
         val mimeTypes = arrayOf("image/jpeg", "image/png")
         intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
 
-        //startActivityForResult(intent, REQUEST_PHOTO_LIBRARY)
-        launchGalleryActivity.launch(intent)
+        startActivityForResult(intent, REQUEST_PHOTO_LIBRARY)
     }
 
     private fun createImageFile(): File {
@@ -119,8 +118,7 @@ class DialogFragment : BottomSheetDialogFragment() {
                 )
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
                 try {
-                    //startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-                    launchCameraActivity.launch(takePictureIntent)
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
                 } catch ( e: ActivityNotFoundException){
                     Log.e(TAG, "Activity not found", e)
                 }
@@ -130,6 +128,7 @@ class DialogFragment : BottomSheetDialogFragment() {
     private fun makeCurrentFragment(fragment: Fragment) =
         activity?.supportFragmentManager?.beginTransaction()?.apply {
             replace(R.id.fl_wrapper, fragment)
+            addToBackStack(null)
             commit()
         }
 

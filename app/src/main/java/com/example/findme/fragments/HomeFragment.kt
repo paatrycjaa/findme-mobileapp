@@ -18,12 +18,13 @@ import com.example.findme.adapters.DogsAdapter.onDogItemClickListener
 import com.example.findme.databinding.FragmentHomeBinding
 import com.example.findme.models.Dog
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val adapter = DogsAdapter()
     private lateinit var viewModel: DogsViewModel
+    override var bottomNavigationViewVisibility = View.VISIBLE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +66,14 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+        
+        binding.fab.setOnClickListener(object: View.OnClickListener{
+            override fun onClick(p0: View?) {
+                val dialogFragment = DialogFragment()
+                dialogFragment.show(requireActivity().supportFragmentManager,"dialog")
+            }
+        })
+
         binding.recyclerViewHome.itemAnimator = androidx.recyclerview.widget.DefaultItemAnimator()
         viewModel.dog.observe(viewLifecycleOwner, {adapter.addDog(it)})
         //viewModel.getRealtimeUpdate()

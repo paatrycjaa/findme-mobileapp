@@ -30,7 +30,9 @@ class DogsViewModel: ViewModel() {
         }
 
         override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-            TODO("Not yet implemented")
+            val dog = snapshot.getValue(Dog::class.java)
+            dog?.id = snapshot.key
+            _dog.value = dog!!
         }
 
         override fun onChildRemoved(snapshot: DataSnapshot) {

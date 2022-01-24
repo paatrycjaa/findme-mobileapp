@@ -5,10 +5,10 @@
         android:id="@+id/ic_baseline_home_24"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="Aktualnosci"/>
-    <item
-        android:id="@+id/ic_baseline_search_24"
-        android:icon="@drawable/ic_baseline_search_24"
-        android:title="Szukaj pupila"/>
+<!--    <item-->
+<!--        android:id="@+id/ic_baseline_search_24"-->
+<!--        android:icon="@drawable/ic_baseline_search_24"-->
+<!--        android:title="Szukaj pupila"/>-->
     <item
         android:id="@+id/ic_baseline_pets_24"
         android:icon="@drawable/ic_baseline_pets_24"
